@@ -1,9 +1,17 @@
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
+@Table(name = "products")
 public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "prod_id")
     private int id;
+    @Column(name = "prod_title")
     private String title;
-    private double coust;
+    @Column(name = "prod_cost")
+    private double cost;
     private List<Customer> customers;
 
     public int getId() {
@@ -22,12 +30,12 @@ public class Product {
         this.title = title;
     }
 
-    public double getCoust() {
-        return coust;
+    public double getCost() {
+        return cost;
     }
 
-    public void setCoust(double coust) {
-        this.coust = coust;
+    public void setCost(double coust) {
+        this.cost = cost;
     }
 
     public List<Customer> getCustomers() {

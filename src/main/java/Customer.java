@@ -1,8 +1,14 @@
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
+@Table(name = "сustomers")
 public class Customer {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "cust_id")
     private int id;
+    @Column(name = "cust_name")
     private String name;
     private List <Product> products;
 
