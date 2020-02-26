@@ -12,7 +12,7 @@ public class Product {
     private String title;
     @Column(name = "prod_cost")
     private double cost;
-    private List<Customer> customers;
+//    private List<Customer> customers;
 
     public int getId() {
         return id;
@@ -38,11 +38,18 @@ public class Product {
         this.cost = cost;
     }
 
-    public List<Customer> getCustomers() {
-        return customers;
+    public Product() {
     }
+    //    public List<Customer> getCustomers() {
+//        return customers;
+//    }
+//
+//    public void setCustomers(List<Customer> customers) {
+//        this.customers = customers;
+//    }
 
-    public void setCustomers(List<Customer> customers) {
-        this.customers = customers;
+    @Override
+    public String toString() {
+        return "Product [" + id + " " + title + " " + cost + "]";
     }
 }
