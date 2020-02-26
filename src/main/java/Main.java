@@ -28,18 +28,42 @@ public class Main {
 //            factory.close();
 //            session.close();
 //        }
-        try {
-//           // CREATE
-            session = factory.getCurrentSession();
-            Product tmpProd = new Product();
-//            tmpProd.setTitle("Audio sistem 3");
-            tmpProd.setCost(1.22);
-            session.beginTransaction();
-            session.save(tmpProd);
-            session.getTransaction().commit();
-        } finally {
-            factory.close();
-            session.close();
-        }
+//        try {
+////           // CREATE
+//            session = factory.getCurrentSession();
+//            Product tmpProd = new Product();
+//            tmpProd.setTitle("Audio sistem");
+//            tmpProd.setCost(1.22);
+//            session.beginTransaction();
+//            session.save(tmpProd);
+//            session.getTransaction().commit();
+//        } finally {
+//            factory.close();
+//            session.close();
+//        }
+
+//        try {
+////           // READ
+//            session = factory.getCurrentSession();
+//            session.beginTransaction();
+//            Product product = session.get(Product.class,2);
+//            System.out.println(product);
+//            session.getTransaction().commit();
+//        } finally {
+//            factory.close();
+//            session.close();
+//        }
+
+//        try {
+//////           // DELETE
+//            session = factory.getCurrentSession();
+//            session.beginTransaction();
+//            Product product = session.get(Product.class,4);
+//            session.delete(product);
+//            session.getTransaction().commit();
+//        } finally {
+//            factory.close();
+//            session.close();
+//        }
     }
 }
