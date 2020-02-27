@@ -12,7 +12,13 @@ public class Product {
     private String title;
     @Column(name = "prod_cost")
     private double cost;
-//    private List<Customer> customers;
+    @ManyToMany
+    @JoinTable(
+            name = "shop_cart",
+            joinColumns = @JoinColumn(name = "prod_id"),
+            inverseJoinColumns = @JoinColumn(name = "cust_id")
+    )
+    private List<Customer> customers;
 
     public int getId() {
         return id;
@@ -40,16 +46,25 @@ public class Product {
 
     public Product() {
     }
-    //    public List<Customer> getCustomers() {
-//        return customers;
-//    }
-//
-//    public void setCustomers(List<Customer> customers) {
-//        this.customers = customers;
+        public List<Customer> getCustomers() {
+        return customers;
+    }
+
+    public void setCustomers(List<Customer> customers) {
+        this.customers = customers;
+    }
+
+//    @Override
+//    public String toString() {
+//        return "Product [" + id + " " + title + " " + cost + "]";
 //    }
 
     @Override
     public String toString() {
-        return "Product [" + id + " " + title + " " + cost + "]";
+        String allBooks = "";
+        for (Customer o : customers) {
+            allBooks += o.getName() + " ";
+        }
+        return "Product [" + id + " " + title + " " + cost + " " + allBooks + "]";
     }
 }

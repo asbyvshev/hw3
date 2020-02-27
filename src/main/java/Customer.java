@@ -10,7 +10,13 @@ public class Customer {
     private int id;
     @Column(name = "cust_name")
     private String name;
-//    private List <Product> products;
+    @ManyToMany
+    @JoinTable(
+            name = "shop_cart",
+            joinColumns = @JoinColumn(name = "cust_id"),
+            inverseJoinColumns = @JoinColumn(name = "prod_id")
+    )
+    private List <Product> products;
 
     public int getId() {
         return id;
@@ -28,16 +34,25 @@ public class Customer {
         this.name = name;
     }
 
-//    public List<Product> getProducts() {
-//        return products;
-//    }
-//
-//    public void setProducts(List<Product> products) {
-//        this.products = products;
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
+
+//    @Override
+//    public String toString() {
+//        return "Customer [" + id + " " + name + "]";
 //    }
 
     @Override
     public String toString() {
-        return "Customer [" + id + " " + name + "]";
+        String allProducts = "";
+        for (Product o : products) {
+            allProducts += o.getTitle() + " ";
+        }
+        return "Product [" + id + " " + name + " " + allProducts + "]";
     }
 }
