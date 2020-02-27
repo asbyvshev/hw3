@@ -9,10 +9,9 @@ public class Main {
                     .configure("hibernate.cfg.xml")
                     .addAnnotatedClass(Customer.class)
                     .addAnnotatedClass(Product.class)
-//                    .addAnnotatedClass(ShopCart.class)
                     .buildSessionFactory();
 
-           delCustomerById(factory,1);
+
 
     }
     public static void insProduct(SessionFactory factory, String title, double cost){
@@ -70,13 +69,12 @@ public class Main {
             session.close();
         }
     }
-    public static void findAllBuyProductByTitle (SessionFactory factory, String prodTitle){
+    public static void findAllCustomersByProdID (SessionFactory factory, int id){
         Session session = null;
         try {
             session = factory.getCurrentSession();
             session.beginTransaction();
-            // to do
-            Product product = session.get(Product.class,2);
+            Product product = session.get(Product.class,id);
             System.out.println(product);
             session.getTransaction().commit();
         } finally {
@@ -84,5 +82,15 @@ public class Main {
             session.close();
         }
     }
-    public static void findAllCustomersProducts (SessionFactory factory, String name){}
+    public static void findAllProductsByCustID (SessionFactory factory, int id){    Session session = null;
+        try {
+            session = factory.getCurrentSession();
+            session.beginTransaction();
+            Customer customer = session.get(Customer.class,id);
+            System.out.println(customer);
+            session.getTransaction().commit();
+        } finally {
+            factory.close();
+            session.close();
+        }}
 }
