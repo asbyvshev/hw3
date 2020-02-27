@@ -44,7 +44,6 @@ public class Main {
             session.close();
         }
     }
-
     public static void delCustomerById(SessionFactory factory, int id){
         Session session = null;
         try {
@@ -85,4 +84,5 @@ public class Main {
             session.close();
         }
     }
+    public static void findAllCustomersProducts (SessionFactory factory, String name){}
 }
